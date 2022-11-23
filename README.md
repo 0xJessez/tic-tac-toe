@@ -3,7 +3,7 @@ Classic game of Tic-Tac-Toe reimagined using HTML, CSS and Javascript!
 
 Play here - https://0xjessez.github.io/tic-tac-toe/
 
-<img src='https://github.com/0xJessez/tic-tac-toe/blob/main/Tic-Tac-Toe.png' alt='final project design' width='600px'>
+<img src='https://github.com/0xJessez/tic-tac-toe/blob/main/Tic-Tac-Toe.png' alt='final project design' width='900px'>
 
 ## About
 
@@ -14,12 +14,13 @@ Each player takes turns placing an X or an O in the empty squares by clicking on
 ## Planning
 
 1. Layout
-Initial design of the layout ([Initial Wireframing](https://github.com/0xJessez/tic-tac-toe/blob/main/Initial%20wireframing.pdf)) was completed in figma. This allowed me to visualise where each element would sit on the page determined by  HTML / CSS code.
+- Initial design of the layout ([Initial Wireframing](https://github.com/0xJessez/tic-tac-toe/blob/main/Initial%20wireframing.pdf)) was completed in figma. This allowed me to visualise where each element would sit on the page determined by  HTML / CSS code.
 
-2. Game logic
+2. Game logic  
+
 *Initial planning*
-First pass of pseudo-code
 ```
+First pass of pseudo-code
 1. Each box (3x3 grid) must be responsive to a click and place the relevant symbol or image in the box
 - .addEventListener to register clicks, this can apply a CSS style or append an element to create the desired effect
 
