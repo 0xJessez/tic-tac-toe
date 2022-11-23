@@ -20,11 +20,11 @@
 // Declaring general grid elements / variables
 var grid = document.querySelector('.grid')
 var box = document.querySelector('.box')
-var knot = document.createElement('div')
-var innerKnot = document.createElement('div')
-knot.id = 'outer-circle'
-innerKnot.id = 'inner-circle'
-knot.appendChild(innerKnot)
+var nought = document.createElement('div')
+var innerNought = document.createElement('div')
+nought.id = 'outer-circle'
+innerNought.id = 'inner-circle'
+nought.appendChild(innerNought)
 
 var cross1 = document.createElement('div')
 var cross2 = document.createElement('div')
@@ -34,7 +34,7 @@ cross1.appendChild(cross2)
 
 var statusBar = document.querySelector('.statusBar')
 
-var count = 0
+var turnCount = 0
 
 // Declaring individual boxes
 var box1 = document.querySelector('#box1')
@@ -48,31 +48,95 @@ var box8 = document.querySelector('#box8')
 var box9 = document.querySelector('#box9')
 
 // Array to track player moves
-var winCon = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+// var winCon = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+var winCon = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+// 1: player 1 square; 2: player 2 square
+
+var p1Win = false
+var p2Win = false
+var draw = false
 
 // Game logic
 grid.addEventListener('click', function (event) {
     box = event.target
-    if(box.className === 'box' && count % 2 === 0) {
-        box.appendChild(knot.cloneNode(true))
-        // box.appendChild(cross1.cloneNode(true))
+    var boxID = box.id.slice(-1)
+    // console.log(boxID)
+    if(box.className === 'box' && turnCount % 2 === 0) {
+        box.appendChild(nought.cloneNode(true))
+        // box.appendChild(crNought.cloneNode(true))
         box.classList.add('o')
-        winCon.splice(box.id.slice(-1)-1, 1, 1)
-        count++
-        console.log(count)
+        
+        turnCount++
+        // console.log(turnCount)
 
-    } else if (box.className === 'box' && count % 2 !== 0) {
+        if(boxID <= 3) {
+            winCon[0][boxID-1] = 1
+        } else if (boxID <= 6) {
+            winCon[1][boxID-4] = 1
+        } else {
+            winCon[2][boxID-7] = 1
+        }
+        // winCon.splice(box.id.slice(-1)-1, 1, 1)
+
+
+    } else if (box.className === 'box' && turnCount % 2 !== 0) {
         box.appendChild(cross1.cloneNode(true))
         box.classList.add('x')
-        winCon.splice(box.id.slice(-1)-1, 1, 2)
-        count++
-        console.log(count)
+        // winCon.splice(box.id.slice(-1)-1, 1, 2)
+        turnCount++
+        // console.log(turnCount)
+
+        if(boxID <= 3) {
+            winCon[0][boxID-1] = 2
+        } else if (boxID <= 6) {
+            winCon[1][boxID-4] = 2
+        } else {
+            winCon[2][boxID-7] = 2
+        }
     }
-    // if (box1.className === 'box o' && box2.className === 'box o' && box3.className === 'box o' || box1.className === 'box o' && box2.className === 'box o' && box3.className === 'box o' || box1.className === 'box o' && box2.className === 'box o' && box3.className === 'box o' || box1.className === 'box o' && box2.className === 'box o' && box3.className === 'box o' ||) {
+    
+    checkWin()
+    if (p1Win === true) {
+        statusBar.textContent = 'Player 1 Wins!'
+    } else if (p2Win === true) {
+        statusBar.textContent = 'Player 2 Wins!'
+    } else if (draw === true) {
+        statusBar.textContent = 'It\'s a draw'
+    }
+})
+
+// if (box1.className === 'box o' && box2.className === 'box o' && box3.className === 'box o' || box1.className === 'box o' && box2.className === 'box o' && box3.className === 'box o' || box1.className === 'box o' && box2.className === 'box o' && box3.className === 'box o' || box1.className === 'box o' && box2.className === 'box o' && box3.className === 'box o' ||) {
     //     statusBar.textContent = "Player 1 WINS"
     // } 
-})
 
 // wincon loops
 
+
+// 
+function checkWin () {
+    for (var i = 0; i < 3; i++) {
+        var playerMoves = 0
+        var playerWin = 0
+        for (var j = 0; j < 3; j++) {
+            if (winCon[i][j] !== 0) {
+                playerMoves++
+            }
+            playerWin += winCon[i][j]
+            // console.log(playerMoves)
+            // console.log(playerWin)
+        }
+        if (playerMoves === 3) {
+            if (playerWin === 3) {
+                p1Win = true
+            } else if (playerWin === 6) {
+                p2Win = true
+            } else if (turnCount === 9) {
+                draw = true
+            }
+        }
+        // console.log(p1Win)
+        // console.log(p2Win)
+        // console.log(draw)
+    }
+}
 
