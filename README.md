@@ -36,11 +36,11 @@ First pass of pseudo-code
 
 *Revised game logic*
 - After coding out the base game logic, I realised it would be more intuitive to track the location of clicks within an array. Specifically a two dimensional array using 1's and 2's to represent player decisions similiar to how the noughts and cross board looks.
-
+```
 [ [1, 1, 2],
   [2, 2, 1],
   [2, 1, 1] ]
-
+```
 - This allowed me to removed large nested if statements testing for a win condition and replace them with for loops running through array combinations
    
 ## Technology
