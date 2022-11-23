@@ -7,7 +7,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
     <script defer src="./app.js"></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -16,13 +18,14 @@
         <h1>Simple Tic Tac Toe</h1>
     </header>
     
-    <div class="statusBar">Placeholder (display game status here)</div>
+    <div class="statusBar">Player 1 go!</div>
 
     <main>
         <aside class="p1Aside">
             <h3 class="p1Name">Player 1</h3>
-            <div class="p1CharImg"><img src="" alt="P1avatar"></div>
-            <div class="p1Tally">Tally table</div>
+            <div class="p1CharImg"><img src="./images/p1.svg" alt="P1avatar"></div>
+            <div class="p1Tally"># Games Won</div>
+            <div class="p1TallyNum">0</div>
         </aside>
 
         <div class="grid">
@@ -39,16 +42,27 @@
 
         <aside class="p2Aside">
             <h3 class="p2Name">Player 2</h3>
-            <div class="p2CharImg"><img src="" alt="P2avatar"></div>
-            <div class="p2Tally">Tally table</div>
+            <div class="p2CharImg"><img src="./images/p2.svg" alt="P2avatar"></div>
+            <div class="p2Tally"># Games Won</div>
+            <div class="p2TallyNum">0</div>
         </aside>
 
     </main>
 
     <footer>
-        <div class="rules">rules</div>
+        <div class="rulesBtn">rules</div>
         <div class="reset">reset</div>
     </footer>
+
+    <!-- Modal items -->
+    <div class="playAgain">
+        <div class="playAgainBtn">Play Again?</div>
+        <div class="playAgainBtnYes">Yes</div>
+        <div class="playAgainBtnNo">No</div>
+    </div>
+
+    <div class="rules">Take turns placing your X or O into one of the empty squares in the grid by clicking on it. To win the game get three of your symbols in a line horizontally, vertically or diagonally. <div class="close">close</div>
+    </div>
 
 </body>
 
