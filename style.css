@@ -1,0 +1,139 @@
+/* GLOBAL */
+* {
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+
+body {
+    max-width: 1280px;
+    margin: 0 auto;
+    
+}
+
+/* HEADER ITEMS */
+h1 {
+    text-align: center;
+    padding: 20px;
+}
+
+.statusBar {
+    text-align: center;
+}
+
+/* MAIN ITEMS */
+
+main {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+/* 3X3 GRID */
+.box {
+    border: 2px solid rgb(0, 70, 0);
+    background-color: rgb(197, 227, 197);
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    
+}
+
+.grid {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px;
+    border: 1px solid rgb(90, 125, 90);    
+}
+
+#box1, #box2, #box3 {
+    border-top: none;
+}
+
+#box7, #box8, #box9 {
+    border-bottom: none;
+}
+
+#box1, #box4, #box7 {
+    border-left: none;
+}
+
+#box3, #box6, #box9 {
+    border-right: none;
+}
+
+/* Knot & Cross elements */
+
+#outer-circle {
+    background: #385a94;
+    border-radius: 50%;
+    height: 80%;
+    width: 80%;
+    position: relative;
+    top: 10%;
+    left: 10%;
+}
+
+#inner-circle {
+    position: absolute;
+    background: #a9aaab;
+    border-radius: 50%;
+    height: 70%;
+    width: 70%;
+    top: 15%;
+    left: 15%;
+}
+
+.cross1 {
+    content: '';
+    height: 80%;
+    border-left: 4px solid rgba(255, 0, 0, 0.75);
+    position: relative;
+    transform: rotate(45deg);
+    left: 33%;
+    top: 45%;
+}
+
+.cross2 {
+    content: '';
+    height: 100%;
+    border-left: 4px solid rgb(255, 0, 0, 0.75);
+    position: absolute;
+    transform: rotate(-90deg);
+}
+
+/* Player information */
+.p1Aside {
+    margin-right: 30px;
+    padding-right: 150px;
+    background-color: aquamarine;
+}
+
+.p2Aside {
+    margin-left: 30px;
+    padding-right: 150px;
+    background-color: aquamarine;
+}
+
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+    background: orange;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;    
+}
+
+.rules {
+    padding: 5px;
+}
+
+.reset {
+    padding: 5px;
+}
