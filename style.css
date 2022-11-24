@@ -137,6 +137,7 @@ main {
     width: 200px;
     border: 1px double #6b40fb;
     margin: 10px auto;
+    cursor: pointer;
 }
 
 .p1CharImg img {
@@ -148,6 +149,7 @@ main {
     width: 200px;
     border: 1px double #6b40fb;
     margin: 10px auto;
+    cursor: pointer;
 }
 
 .p2CharImg img {
@@ -191,10 +193,11 @@ footer {
 /* Modal items */
 .playAgain {
     display: none;
-    position: fixed;
+    position: absolute;
     z-index: 1;
-    left: 44%;
-    top: 26%;
+    left: 50%;
+    top: 32%;
+    transform: translate(-50%, -50%);
     width: 152px;
     height: 85px;
     /* overflow: auto; enables scroll if needed */
@@ -279,4 +282,60 @@ footer {
     background-color: white;
     color: black;
     cursor: pointer;
+}
+
+.p1Select {
+    display: none;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    grid-template-rows: 100px 100px;
+    grid-template-columns: 100px 100px 100px;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid #6b40fb;
+    padding: 10px;
+    background-color: #020605;
+    cursor: pointer;
+    animation: fadein .5s;
+}
+@keyframes fadein {
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
+}
+
+.p2Select {
+    display: none;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    grid-template-rows: 100px 100px;
+    grid-template-columns: 100px 100px 100px;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid #6b40fb;
+    padding: 10px;
+    background-color: #020605;
+    cursor: pointer;
+    animation: fadein .5s;
+}
+@keyframes fadein {
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
+}
+
+.img img{
+    max-width: 100%;
 }

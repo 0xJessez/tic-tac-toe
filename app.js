@@ -1,22 +1,3 @@
-// Technical requirements for the game
-// 1. Each box (3x3 grid) must be responsive to a click and place the relevant symbol or image in the box
-// 2. Player change after each click
-// 3. The game must recognise when someone wins
-
-// Coding the requirements
-// 1. 
-    // .addEventListener to register clicks, this can apply a CSS style or append an element to create the desired effect
-
-// 2.
-    // Use a counter to keep track of each player's turns so the game knows who is next
-    // If statements can be used to determine whose turn and which symbol / effect to apply. i.e. if both players have gone once use player 1's effect or if player 1 has gone use player 2's effect
-    // Counter can be included as a variable inside the event function
-
-// 3. 
-    // There are 12 possible combinations of winning and this can be tested for after each click using an if function
-    // Each box will need to be tracked to run above if function, can be done using a unique ID for each box
-
-
 // Global DOM variables
 var grid = document.querySelector('.grid')
 var box = document.querySelectorAll('.box')
@@ -59,51 +40,53 @@ grid.addEventListener('click', function (event) {
     // console.log(targetBox)
     var boxID = targetBox.id.slice(-1)
     // console.log(boxID)
-    if (targetBox.className === 'box' && turnCount % 2 === 0) {
-        targetBox.appendChild(nought.cloneNode(true))
-        targetBox.classList.add('o')
-        turnCount++
-        // console.log(turnCount)
+    if(p1Win !== true && p2Win !== true && draw !== true) {
+        if (targetBox.className === 'box' && turnCount % 2 === 0) {
+            targetBox.appendChild(nought.cloneNode(true))
+            targetBox.classList.add('o')
+            turnCount++
+            // console.log(turnCount)
 
-        statusBar.textContent = 'Player 2 go!'
+            statusBar.textContent = 'Player 2 go!'
 
-        if(boxID <= 3) {
-            winCon[0][boxID-1] = 1
-        } else if (boxID <= 6) {
-            winCon[1][boxID-4] = 1
-        } else {
-            winCon[2][boxID-7] = 1
+            if(boxID <= 3) {
+                winCon[0][boxID-1] = 1
+            } else if (boxID <= 6) {
+                winCon[1][boxID-4] = 1
+            } else {
+                winCon[2][boxID-7] = 1
+            }
+        } else if (targetBox.className === 'box' && turnCount % 2 !== 0) {
+            targetBox.appendChild(cross1.cloneNode(true))
+            targetBox.classList.add('x')
+            turnCount++
+            // console.log(turnCount)
+
+            statusBar.textContent = 'Player 1 go!'
+
+            if(boxID <= 3) {
+                winCon[0][boxID-1] = 2
+            } else if (boxID <= 6) {
+                winCon[1][boxID-4] = 2
+            } else {
+                winCon[2][boxID-7] = 2
+            }
         }
-    } else if (targetBox.className === 'box' && turnCount % 2 !== 0) {
-        targetBox.appendChild(cross1.cloneNode(true))
-        targetBox.classList.add('x')
-        turnCount++
-        // console.log(turnCount)
+        
+        checkWin()
 
-        statusBar.textContent = 'Player 1 go!'
-
-        if(boxID <= 3) {
-            winCon[0][boxID-1] = 2
-        } else if (boxID <= 6) {
-            winCon[1][boxID-4] = 2
-        } else {
-            winCon[2][boxID-7] = 2
+        if (p1Win === true) {
+            statusBar.textContent = 'Player 1 Wins!'
+            p1GamesWon.textContent = Number(p1GamesWon.textContent) + 1
+            playAgain.style.display = 'block'
+        } else if (p2Win === true) {
+            statusBar.textContent = 'Player 2 Wins!'
+            p2GamesWon.textContent = Number(p2GamesWon.textContent) + 1
+            playAgain.style.display = 'block'
+        } else if (draw === true) {
+            statusBar.textContent = 'It\'s a draw'
+            playAgain.style.display = 'block'
         }
-    }
-    
-    checkWin()
-
-    if (p1Win === true) {
-        statusBar.textContent = 'Player 1 Wins!'
-        p1GamesWon.textContent = Number(p1GamesWon.textContent) + 1
-        playAgain.style.display = 'block'
-    } else if (p2Win === true) {
-        statusBar.textContent = 'Player 2 Wins!'
-        p2GamesWon.textContent = Number(p2GamesWon.textContent) + 1
-        playAgain.style.display = 'block'
-    } else if (draw === true) {
-        statusBar.textContent = 'It\'s a draw'
-        playAgain.style.display = 'block'
     }
 })
 
@@ -212,6 +195,7 @@ reset.addEventListener('click', function (event) {
     statusBar.textContent = 'Player 1 go!'
     p1GamesWon.textContent = '0'
     p2GamesWon.textContent = '0'
+    playAgain.style.display = 'none'
     winCon = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
     turnCount = 0
     p1Win = false
@@ -258,4 +242,32 @@ openRules.addEventListener('click', function (event) {
 
 closeRules.addEventListener('click', function (event) {
     rules.style.display = 'none'
+})
+
+// p1 picture select
+
+var p1Picture = document.querySelector('.p1CharImg img')
+var p1PictureSelect = document.querySelector('.p1Select')
+p1Picture.addEventListener('click', function (event) {
+    p1PictureSelect.style.display = 'grid'
+})
+
+p1PictureSelect.addEventListener('click', function (event) {
+    var targetPicture = event.target
+    p1Picture.src = targetPicture.src
+    p1PictureSelect.style.display = 'none'  
+})
+
+// p2 picture select
+
+var p2Picture = document.querySelector('.p2CharImg img')
+var p2PictureSelect = document.querySelector('.p2Select')
+p2Picture.addEventListener('click', function (event) {
+    p2PictureSelect.style.display = 'grid'
+})
+
+p2PictureSelect.addEventListener('click', function (event) {
+    var targetPicture = event.target
+    p2Picture.src = targetPicture.src
+    p2PictureSelect.style.display = 'none'  
 })
