@@ -58,5 +58,4 @@ First pass of pseudo-code
 ## Improvements
 - Various CSS visual improvements can be made and are planned i.e. animations on user score as the tally increases
 - Positioning of modal items are not accurate
-- Updating for mobile use
 
