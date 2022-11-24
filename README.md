@@ -11,6 +11,10 @@ The task at hand was to render a game of Tic-Tac-Toe (noughts and crosses) in br
 
 Each player takes turns placing an X or an O in the empty squares by clicking on the grid and a winner is determined when any three symbols match in a line horizontally, vertically or diagonally.
 
+Don't forget to personalise your experience. Try changing your character!
+
+<img src='https://github.com/0xJessez/tic-tac-toe/blob/main/Personalise-avatar.png' alt='personalise avatar'>
+
 ## Planning
 
 1. Layout
@@ -53,4 +57,5 @@ First pass of pseudo-code
 
 ## Improvements
 - Various CSS visual improvements can be made and are planned i.e. animations on user score as the tally increases
+- Positioning of modal items are not accurate
 
